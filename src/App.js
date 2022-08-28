@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     getRecipes();
-  }, []);
+  }, [query]);
 
   const getRecipes = async () => {
     const response = await fetch(
@@ -28,11 +28,10 @@ const App = () => {
     console.log(search);
   };
 
-  const getSearch = e => {
+  const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
-  }
-
+  };
 
   return (
     <div className="App">
