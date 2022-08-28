@@ -13,7 +13,8 @@ const Recipe = ({ title, calories, image, ingredients, url }) => {
       <p>
         {calories.toFixed(2) + ' kcal'}
       </p>
-      <img className={style.image} src={image} alt="" href={url} />
+      <a href={url}>Recipe</a>
+      <img className={style.image} src={image} alt=""/>
     </div>
   );
 };
