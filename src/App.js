@@ -20,7 +20,7 @@ const App = () => {
     );
     const data = await response.json();
     setRecipes(data.hits);
-    console.log(data.hits);
+    console.log(data);
   };
 
   const updateSearch = (e) => {
@@ -54,6 +54,7 @@ const App = () => {
           calories={recipe.recipe.calories}
           image={recipe.recipe.image}
           ingredients={recipe.recipe.ingredients}
+          url={recipe.recipe.url}
         />
       ))}
       </div>
