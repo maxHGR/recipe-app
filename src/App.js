@@ -3,7 +3,7 @@ import './style.css';
 
 const App = () => {
   const APP_ID = '278f2db2';
-  const APP_KEY = 'ac5aa8bc7602562e4fe71590cc8d8f15';
+  const APP_KEY = '3142404a19f516152866e824d299b5e0';
 
   const [recipes, setRecipes] = useState([]);
 
