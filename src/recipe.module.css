@@ -1,7 +1,6 @@
 .recipe {
-  border-radius: 10px;
-  box-shadow: 0px 5px 20px rgb(71, 71, 71);
   
+  box-shadow: 0px 5px 20px rgb(71, 71, 71);
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -12,6 +11,7 @@
 }
 
 .image {
+  border-radius: 25%;
   max-height: 25vh;
   max-width: 40vw;
   padding: 2vh;
