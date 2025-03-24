@@ -1,32 +1,151 @@
-.App {
-  min-height: 100vh;
-  background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+/* Reset and global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.search-form {
-  min-height: 10vh;
+html, body {
+  height: 100%;
+  font-family: 'Open Sans', sans-serif; /* Modern and clean font for general text */
+  background: white; /* Background gradient */
+  color: #212529; /* Primary text color */
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+/* Header styles */
+.header {
+  background: mediumseagreen; /* Primary color */
+  color: white;
+  height: 15vh;
+  padding: 20px;
+  margin-bottom: 5vh;
+  text-align: center;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: height 0.3s ease, padding 0.3s ease;
+}
+
+.header-title {
+  font-family: 'Poppins', sans-serif; /* Elegant font for the title */
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.search-icon {
+  position: absolute;
+  align-self: center;
+  top: 4.5vh;
+  right: 4vw;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.search-icon:hover {
+  transform: scale(1.2); /* Slight zoom effect on hover */
+}
+
+.search-form {
+  display: flex;
+  justify-content: center; 
+
+  position: absolute;
+  top: 4.5vh;
+  right: 60px; /* Position the search bar to the left of the search icon */
+  overflow: hidden; /* Prevent content overflow during animation */
+  width: 0; /* Initially hidden */
+  opacity: 0; /* Initially invisible */
+  transition: width 0.5s ease, opacity 0.3s ease; /* Smooth animation */
+}
+
+.search-form.active {
+  width: calc(100% - 80px); /* Expand to full width minus space for the icon */
+  opacity: 1; /* Make visible */
 }
 
 .search-bar {
-  width: 55%;
-  height: 20px;
-  border: none;
-  border-radius: 3px;
+  width: 0; /* Initially hidden */
+  max-width: 500px;
+  padding: 10px;
+  border: 1px solid #6c757d; /* Secondary color */
+  border-radius: 5px;
+  font-size: 16px;
+  transition: width 0.5s ease; /* Smooth width expansion */
+}
+
+.search-form.active .search-bar {
+  width: 100%; /* Expand the search bar */
 }
 
 .search-button {
-  background: lightcoral;
+  background: #0056b3; /* Darker shade of primary color */
   border: none;
-  border-radius: 3px;
-  padding: 5px 10px;
+  border-radius: 5px;
+  padding: 10px 20px;
   color: white;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
+.search-button:hover {
+  background: #003f7f; /* Even darker shade */
+}
+
+/* When search is active */
+.header.search-active {
+  padding: 10px 20px;
+  
+}
+
+.header.search-active .header-title {
+  opacity: 0; /* Hide the title */
+}
+
+
+
+/* Recipes container */
 .recipes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  padding: 10px;
+}
+
+/* Footer styles */
+footer {
+  height: 10vh;
+  text-align: center;
+  margin-top: 7vh;
+  padding: 10px 0;
+  background: mediumseagreen; /* Primary color */
+  color: white;
+  font-size: 14px;
+
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }

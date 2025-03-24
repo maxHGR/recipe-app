@@ -1,3 +1,5 @@
 {
-  "name": "Recipe App"
+  "name": "Recipe App",
+  "description": "Recipe Finder that let´s you search based on the ingredients you have",
+  "short_name": "Recipe Finder"
 }

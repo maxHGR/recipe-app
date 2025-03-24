@@ -8,7 +8,8 @@ const App = () => {
 
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
-  const [query, setQuery] = useState('chicken');
+  const [query, setQuery] = useState('vegetables');
+  const [isSearchActive, setIsSearchActive] = useState(false); // State to toggle search bar
 
   useEffect(() => {
     getRecipes();
@@ -16,7 +17,7 @@ const App = () => {
 
   const getRecipes = async () => {
     const response = await fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=8&calories=591-722&health=alcohol-free`
+      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=15&calories=591-722&health=alcohol-free`
     );
     const data = await response.json();
     setRecipes(data.hits);
@@ -33,19 +34,36 @@ const App = () => {
     setSearch('');
   };
 
+  const toggleSearch = () => {
+    setIsSearchActive(!isSearchActive); // Toggle the search bar
+  };
+
   return (
     <div className="App">
-      <form onSubmit={getSearch} className="search-form">
-        <input
-          className="search-bar"
-          type="text"
-          value={search}
-          onChange={updateSearch}
-        />
-        <button className="search-button" type="submit">
-          Search
-        </button>
-      </form>
+      <header className={`header ${isSearchActive ? 'search-active' : ''}`}>
+        <h1 className="header-title">Recipe Finder</h1>
+        <div className='search-container'>
+          <form
+            onSubmit={getSearch}
+            className={`search-form ${isSearchActive ? 'active' : ''}`}
+          >
+            <input
+              className="search-bar"
+              type="text"
+              value={search}
+              onChange={updateSearch}
+              placeholder="Search by recipe, ingredients, diet, cuisine, ..."
+            />
+            <button className="search-button" type="submit">
+              Search
+            </button>
+          </form>
+          <div className="search-icon" onClick={toggleSearch}>
+            🔍
+          </div>
+        </div>
+      </header>
+
       <div className="recipes">
       {recipes.map((recipe) => (
         <Recipe
@@ -58,8 +76,29 @@ const App = () => {
         />
       ))}
       </div>
+
+      <footer className="footer">
+        Recipe Finder  🔍
+      </footer>
     </div>
   );
 };
 
 export default App;
+
+/*
+<header className="header">
+  <h1 className="header-title">Recipe Finder</h1>
+</header>
+<form onSubmit={getSearch} className="search-form">
+  <input
+    className="search-bar"
+    type="text"
+    value={search}
+    onChange={updateSearch}
+  />
+  <button className="search-button" type="submit">
+    Search
+  </button>
+</form>
+*/
